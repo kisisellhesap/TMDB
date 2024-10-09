@@ -1,0 +1,253 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
+
+:root {
+  --soft-blue: #1a242e;
+  --dark-blue: #0f171f;
+  --soft-blue-2: #1a232a;
+  --text-color: #628fc4;
+  --warning-color: rgb(226, 183, 11);
+  --success-color: rgb(40, 173, 40);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Merriweather", serif;
+}
+
+body {
+  font-size: 16px;
+  background-color: var(--dark-blue);
+  min-height: 100vh;
+  min-width: 370px;
+}
+
+/* main {
+} */
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  gap: 1rem;
+  background-color: var(--soft-blue);
+}
+header a {
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+header input {
+  padding: 0.5rem;
+  background-color: transparent;
+  font-size: 0.8rem;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  border-radius: 3px;
+}
+
+header input::placeholder {
+  color: #999;
+}
+
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 3 eşit sütun */
+  padding: 2rem 3rem;
+  gap: 1.5rem;
+  min-height: 85vh;
+  position: relative;
+}
+
+.movie-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
+.movie-overview {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: fit-content;
+  content: "";
+  background-color: var(--text-color);
+  transform: translate(0px, 500px);
+  transition: all 0.4s ease;
+}
+
+.movie-card:hover .movie-overview {
+  transform: translate(0px, 0px);
+}
+.movie-overview h3 {
+  color: white;
+  font-size: 1.2rem;
+  text-decoration: underline;
+}
+.movie-overview p {
+  color: white;
+  font-size: 0.7rem;
+}
+
+.card-img {
+  overflow: hidden;
+  min-height: 330px;
+}
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.3s ease;
+}
+.movie-card:hover .card-img img {
+  transform: scale(1.1);
+}
+
+.movie-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: var(--soft-blue-2);
+}
+.movie-body > * {
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.movie-name {
+  color: var(--text-color);
+}
+
+.movie-rate {
+  padding: 0.5rem;
+  background-color: var(--dark-blue);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.page-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 3rem;
+}
+.page-content {
+  width: 80%;
+  margin-top: auto;
+}
+.page-settings {
+  width: 100%;
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  gap: 0.5rem;
+  padding: 1rem 0.5rem;
+  /* background-color: yellow; */
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: white;
+  border-radius: 2px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--text-color);
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.active-page {
+  opacity: 1 !important;
+  transform: scale(1.2);
+}
+
+.page-settings button {
+  background-color: var(--text-color);
+  color: var(--dark-blue);
+  padding: 0.5rem 0.8rem;
+  opacity: 0.2;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.7rem;
+  font-weight: 900;
+}
+
+#spinner {
+  font-size: 3rem;
+  margin: auto;
+  animation: spin 1s infinite;
+  color: white;
+  transform: translate(50%, 0px);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .movie-list {
+    grid-template-columns: repeat(4, 1fr); /* 3 eşit sütun */
+  }
+  .card-img {
+    min-height: 377px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .movie-list {
+    grid-template-columns: repeat(3, 1fr); /* 3 eşit sütun */
+  }
+  .card-img {
+    min-height: 403px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .movie-list {
+    grid-template-columns: repeat(2, 1fr); /* 3 eşit sütun */
+  }
+  .card-img {
+    min-height: 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .movie-list {
+    grid-template-columns: repeat(1, 1fr); /* 3 eşit sütun */
+  }
+}
